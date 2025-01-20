@@ -37,7 +37,12 @@ This will read the docker-compose.yml file and build the Docker images for both 
 
 **3. Start the Application**
 Once the build is complete, you can start both services (backend and frontend) with Docker Compose:
+
+docker-compose exec backend php artisan config:cache
+docker-compose exec backend php artisan route:cache
 docker-compose up -d
+
+
 
 This will start both services, and the application will be available at:
 

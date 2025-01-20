@@ -1,0 +1,30 @@
+// {
+//   "files": [],
+//   "references": [
+//     { "path": "./tsconfig.app.json" },
+//     { "path": "./tsconfig.node.json" }
+//   ],
+//   "include": ["src/**/*"]
+// }
+{
+  "compilerOptions": {
+    "composite": true,
+    //"moduleResolution": "bundler",
+    "moduleResolution": "node16",
+    "module": "Node16",
+    "baseUrl": "./",
+    "declaration": true,           // This generates `.d.ts` files
+   // "outDir": "./dist",             // Output directory for compiled files
+    //"rootDir": "./src",   
+    "esModuleInterop": true,
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "references": [
+    {
+      "path": "./tsconfig.node.json",  // Referencing tsconfig.node.json
+      "path": "./tsconfig.app.json"
+    }
+  ]
+}

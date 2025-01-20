@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: ./article-backend/Dockerfile
+    container_name: laravel-backend
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./article-backend:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - app-network
+    restart: always  # Ensure the backend always restarts
+    environment:
+      - APP_ENV=production
+      - DB_HOST=db
+      - DB_DATABASE=articles
+      - DB_USERNAME=root
+      - DB_PASSWORD=Articles@2025
+      - CRON_LOG_FILE=/var/log/cron.log
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./article-frontend/Dockerfile
+    container_name: react-frontend
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: Articles@2025
+      MYSQL_DATABASE: articles
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
+    restart: always
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+    driver: local

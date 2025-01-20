@@ -23,8 +23,7 @@ services:
       - DB_PASSWORD=Articles@2025
       - CRON_LOG_FILE=/var/log/cron.log
       - JWT_SECRET=ykpnohEK7CZsXUDpbeVYiaLsSCwCI6oSamsXHM3HmYVBxX9O1WxNCuGGV4RPL6bv
-      - NEWS_API_KEY=205064077b3e4989bffbf8f138da6532
-
+      - NEWS_API_KEY={YOUR_API_KEY}
   frontend:
     build:
       context: .

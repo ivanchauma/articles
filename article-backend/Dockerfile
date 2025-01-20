@@ -42,8 +42,10 @@ RUN touch /var/log/cron.log
 # Copy supervisord config
 COPY ./article-backend/supervisord.conf /etc/supervisor/supervisord.conf
 
+RUN php artisan migrate --force
+
 # Expose port 9000 for PHP-FPM
 EXPOSE 9000
 
 # Start supervisor in the foreground
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+CMD ["bash", "-c", "php artisan migrate --force && /usr/bin/supervisord -c /etc/supervisor/supervisord.conf"]

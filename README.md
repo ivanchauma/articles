@@ -1,2 +1,2 @@
 # articles
-Articles Repository + React + TypeScript + Redux + Mysql + Doceker
+Articles Repository + React + TypeScript + Redux + Mysql + Docker + Laravel
